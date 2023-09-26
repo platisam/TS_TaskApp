@@ -27,7 +27,7 @@ const TodoList: React.FC<Props> = ({
             {...provided.droppableProps}
           >
             <span className="todos__heading">Active Tasks</span>
-            {todos.map((todo, index) => (
+            {todos?.map((todo, index) => (
               <SingleTodo
                 index={index}
                 todo={todo}
@@ -36,10 +36,10 @@ const TodoList: React.FC<Props> = ({
                 setTodos={setTodos}
               />
             ))}
+            {provided.placeholder}
           </div>
         )}
       </Droppable>
-
       <Droppable droppableId="TodosRemove">
         {(provided) => (
           <div
@@ -48,7 +48,7 @@ const TodoList: React.FC<Props> = ({
             {...provided.droppableProps}
           >
             <span className="todos__heading">Completed Tasks</span>
-            {completedTodos.map((todo, index) => (
+            {completedTodos?.map((todo, index) => (
               <SingleTodo
                 index={index}
                 todo={todo}
@@ -57,6 +57,7 @@ const TodoList: React.FC<Props> = ({
                 setTodos={setCompletedTodos}
               />
             ))}
+            {provided.placeholder}
           </div>
         )}
       </Droppable>
